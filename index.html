@@ -3,44 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coming Soon</title>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500&display=swap" rel="stylesheet">
+    <title>Veizla.gg - Warhammer 40,000</title>
     <style>
-        body {
+        /* Reset default styles and set up basic layout */
+        * {
             margin: 0;
             padding: 0;
-            background-color: black;
-            height: 100vh;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000000;
+            font-family: 'Barlow', sans-serif;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            align-items: center;
         }
-        
-        .image-container {
-            margin-top: 75px;
+
+        /* Container for content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            width: 100%;
         }
-        
-        .image-container img {
-            max-width: 45%;
+
+        /* Top logo section */
+        .logo-section {
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .logo {
+            max-width: 300px;
+            width: 100%;
             height: auto;
         }
-        
-        .coming-soon {
-            color: white;
+
+        /* Three images section */
+        .image-grid {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .grid-item {
+            flex: 1;
+            min-width: 200px;
+            transition: transform 0.3s ease;
+        }
+
+        .grid-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        .grid-item:hover {
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            color: #ffffff;
             font-family: 'Barlow', sans-serif;
             font-weight: 500;
-            font-size: 36px;
-            margin-top: 100px;
-            margin-left: -45%;
+            margin-top: auto;
+        }
+
+        /* Media Queries for responsiveness */
+        @media (max-width: 768px) {
+            .image-grid {
+                flex-direction: column;
+                padding: 20px 0;
+            }
+
+            .grid-item {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .logo {
+                max-width: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+
+            .logo-section {
+                padding: 20px 0;
+            }
+
+            footer {
+                font-size: 14px;
+            }
         }
     </style>
+    <!-- Google Fonts for Barlow -->
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="image-container">
-        <img src="https://veizla.github.io/Veizla/images/Veizla-Full-logo.png" alt="Coming Soon Image">
+    <!-- Logo Section -->
+    <div class="container">
+        <div class="logo-section">
+            <img src="https://veizla.github.io/Veizla/images/Veizla-Full-logo.png" alt="Veizla Logo" class="logo">
+        </div>
+
+        <!-- Three Images Grid -->
+        <div class="image-grid">
+            <a href="http://discord.gg/veizla" target="_blank" class="grid-item">
+                <img src="https://veizla.github.io/Veizla/images/veizla-discord.png" alt="Discord">
+            </a>
+            <a href="https://veizla.github.io/Veizla/Veizla-Mega-2025-Final.pdf" target="_blank" class="grid-item">
+                <img src="https://veizla.github.io/Veizla/images/veizla-mega-website.png" alt="Veizla Mega Announcement">
+            </a>
+            <a href="https://swedish-sv40k-rank.com" target="_blank" class="grid-item">
+                <img src="veizla-rank-website" alt="Swedish SV40k Rank">
+            </a>
+        </div>
     </div>
-    <div class="coming-soon">
-        Coming soon...
-    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Copyright © 2025 Veizla. All rights reserved.</p>
+    </footer>
 </body>
 </html>
