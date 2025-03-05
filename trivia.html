@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trivia Game</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+        #game, #leaderboard { display: none; }
+        .option { margin: 10px; padding: 10px; border: 1px solid #ccc; cursor: pointer; }
+        .option img { max-width: 100px; height: auto; }
+        .correct { background-color: #d4edda; }
+        .incorrect { background-color: #f8d7da; }
+        button { padding: 10px 20px; margin: 5px; }
+    </style>
+</head>
+<body>
+    <div id="start">
+        <h1>Welcome to Trivia Game</h1>
+        <input type="text" id="playerName" placeholder="Enter your name" required>
+        <input type="email" id="playerEmail" placeholder="Enter your email" required>
+        <button onclick="startGame()">Start Game</button>
+    </div>
+
+    <div id="game">
+        <h2 id="question"></h2>
+        <div id="options"></div>
+        <p>Score: <span id="score">0</span></p>
+        <button onclick="nextQuestion()">Next Question</button>
+    </div>
+
+    <div id="leaderboard">
+        <h2>Leaderboard</h2>
+        <table border="1" style="margin: 0 auto;">
+            <thead><tr><th>Name</th><th>Email</th><th>Score</th></tr></thead>
+            <tbody id="leaderboardTable"></tbody>
+        </table>
+        <button onclick="restartGame()">Play Again</button>
+    </div>
+
+    <script>
+        let score = 0;
+        let currentQuestion = 0;
+        let playerName = "";
+        let playerEmail = "";
+        let leaderboard = JSON.parse(localStorage.getItem('leaderboard')) || [];
+
+        // Sample questions (edit these or add more)
+        const questions = [
+            {
+                question: "What is the capital of France?",
+                options: [
+                    { text: "Paris", image: "https://via.placeholder.com/100", correct: true },
+                    { text: "London", image: "https://via.placeholder.com/100", correct: false },
+                    { text: "Berlin", image: "https://via.placeholder.com/100", correct: false },
+                    { text: "Madrid", image: "https://via.placeholder.com/100", correct: false }
+                ]
+            },
+            {
+                question: "Which planet is known as the Red Planet?",
+                options: [
+                    { text: "Earth", image: "https://via.placeholder.com/100", correct: false },
+                    { text: "Mars", image: "https://via.placeholder.com/100", correct: true },
+                    { text: "Jupiter", image: "https://via.placeholder.com/100", correct: false },
+                    { text: "Venus", image: "https://via.placeholder.com/100", correct: false }
+                ]
+            }
+            // Add more questions here in the same format
+        ];
+
+        function startGame() {
+            playerName = document.getElementById('playerName').value;
+            playerEmail = document.getElementById('playerEmail').value;
+            if (!playerName || !playerEmail) {
+                alert("Please enter your name and email!");
+                return;
+            }
+            document.getElementById('start').style.display = 'none';
+            document.getElementById('game').style.display = 'block';
+            showQuestion();
+        }
+
+        function showQuestion() {
+            if (currentQuestion >= questions.length) {
+                endGame();
+                return;
+            }
+            const q = questions[currentQuestion];
+            document.getElementById('question').textContent = q.question;
+            const optionsDiv = document.getElementById('options');
+            optionsDiv.innerHTML = '';
+            q.options.forEach((option, index) => {
+                const div = document.createElement('div');
+                div.className = 'option';
+                div.innerHTML = `<img src="${option.image}" alt="${option.text}"> ${option.text}`;
+                div.onclick = () => checkAnswer(option.correct, div);
+                optionsDiv.appendChild(div);
+            });
+            document.getElementById('score').textContent = score;
+        }
+
+        function checkAnswer(isCorrect, element) {
+            if (isCorrect) {
+                score += 10;
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+            document.querySelectorAll('.option').forEach(opt => opt.onclick = null);
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+            showQuestion();
+        }
+
+        function endGame() {
+            document.getElementById('game').style.display = 'none';
+            document.getElementById('leaderboard').style.display = 'block';
+            leaderboard.push({ name: playerName, email: playerEmail, score: score });
+            leaderboard.sort((a, b) => b.score - a.score);
+            localStorage.setItem('leaderboard', JSON.stringify(leaderboard));
+            updateLeaderboard();
+        }
+
+        function updateLeaderboard() {
+            const table = document.getElementById('leaderboardTable');
+            table.innerHTML = '';
+            leaderboard.forEach(player => {
+                const row = document.createElement('tr');
+                row.innerHTML = `<td>${player.name}</td><td>${player.email}</td><td>${player.score}</td>`;
+                table.appendChild(row);
+            });
+        }
+
+        function restartGame() {
+            score = 0;
+            currentQuestion = 0;
+            document.getElementById('leaderboard').style.display = 'none';
+            document.getElementById('start').style.display = 'block';
+            document.getElementById('playerName').value = '';
+            document.getElementById('playerEmail').value = '';
+        }
+    </script>
+</body>
+</html>
