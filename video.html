@@ -1,0 +1,53 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warhammer 40K Match Archive</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation/Search Bar -->
+        <nav class="navbar">
+            <h1 class="logo">40K BATTLE ARCHIVE</h1>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search by Faction, Country, Player, or Tournament...">
+                <button onclick="searchMatches()">Search</button>
+            </div>
+        </nav>
+
+        <!-- Filter Section -->
+        <div class="filter-section">
+            <select id="factionFilter">
+                <option value="">All Factions</option>
+                <!-- Factions will be dynamically populated -->
+            </select>
+            <select id="countryFilter">
+                <option value="">All Countries</option>
+            </select>
+            <select id="playerFilter">
+                <option value="">All Players</option>
+            </select>
+            <select id="tournamentFilter">
+                <option value="">All Tournaments</option>
+            </select>
+        </div>
+
+        <!-- Featured Match -->
+        <div class="featured-match">
+            <div class="featured-content" id="featuredMatch">
+                <!-- Featured match will be populated by JS -->
+            </div>
+        </div>
+
+        <!-- Match Grid -->
+        <div class="match-grid" id="matchGrid">
+            <!-- Matches will be populated dynamically -->
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
