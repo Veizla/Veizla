@@ -67,7 +67,7 @@ let score = 0;
 let playerName = "";
 let playerEmail = "";
 let leaderboard = [];
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzDl6-pDThjTxbZfrLjABqexYPrM63lrcqmp-vjn7nl_hoPhEj9mig9Oiu8LI40yEp44w/exec"; // Replace if new URL
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzDl6-pDThjTxbZfrLjABqexYPrM63lrcqmp-vjn7nl_hoPhEj9mig9Oiu8LI40yEp44w/exec";
 
 document.getElementById("signup-form").addEventListener("submit", function(e) {
     e.preventDefault();
@@ -78,8 +78,10 @@ document.getElementById("signup-form").addEventListener("submit", function(e) {
     loadQuestion();
     fetchLeaderboard();
     const music = document.getElementById("background-music");
+    music.volume = 0.7; // Set initial volume to 70%
     music.play().catch(error => console.log("Autoplay blocked:", error));
     document.getElementById("music-toggle").textContent = "Pause Music";
+    document.getElementById("volume-slider").value = 70; // Sync slider to 70%
 });
 
 function loadQuestion() {
@@ -188,17 +190,6 @@ musicToggle.addEventListener("click", () => {
 // Adjust volume with slider
 volumeSlider.addEventListener("input", () => {
     music.volume = volumeSlider.value / 100; // Convert 0-100 range to 0.0-1.0
-});
-
-
-musicToggle.addEventListener("click", () => {
-    if (music.paused) {
-        music.play();
-        musicToggle.textContent = "Pause Music";
-    } else {
-        music.pause();
-        musicToggle.textContent = "Play Music";
-    }
 });
 
 fetchLeaderboard();
