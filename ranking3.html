@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rankning 2025 - SV40k</title>
+    <style>
+        body {
+            background: linear-gradient(45deg, #000000, #1a1a1a);
+            color: #00FF00;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        @keyframes auroraWave {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #00CED1, #800080, #FF69B4, #00FF00, #000000);
+            background-size: 400% 400%;
+            animation: auroraWave 15s ease infinite;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        h1 {
+            color: #00CED1;
+            text-align: center;
+            text-shadow: 0 0 10px #00CED1, 0 0 20px #FF69B4;
+            margin-bottom: 20px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 5px #00CED1, 0 0 10px #FF69B4; }
+            to { text-shadow: 0 0 15px #00CED1, 0 0 30px #FF69B4; }
+        }
+
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            background-color: rgba(26, 26, 26, 0.8);
+            box-shadow: 0 0 15px #800080;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th, td {
+            border: 1px solid #FF69B4;
+            padding: 12px;
+            text-align: left;
+            transition: all 0.3s ease;
+        }
+
+        th {
+            background-color: #00CED1;
+            color: #000000;
+            text-shadow: 0 0 5px #FFFFFF;
+            animation: headerGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes headerGlow {
+            from { background-color: #00CED1; }
+            to { background-color: #00AFAF; }
+        }
+
+        tr:nth-child(even) {
+            background-color: #2a2a2a;
+        }
+
+        tr:hover {
+            background-color: #333333;
+            transform: scale(1.02);
+            box-shadow: 0 0 20px #00FF00;
+        }
+
+        .flag {
+            width: 24px;
+            height: 16px;
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+
+        footer {
+            margin-top: 20px;
+            color: #FF69B4;
+            text-align: center;
+            padding: 10px;
+            background: linear-gradient(to right, #000000, #800080);
+            border-radius: 5px;
+            box-shadow: 0 0 10px #FF69B4;
+        }
+
+        @media (max-width: 600px) {
+            table {
+                width: 100%;
+            }
+            th, td {
+                padding: 8px;
+                font-size: 14px;
+            }
+            .flag {
+                width: 20px;
+                height: 13px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Rankning 2025</h1>
+    <table id="rankTable">
+        <tr>
+            <th>Rank</th>
+            <th>Namn</th>
+            <th>Flagga</th>
+            <th>Stad</th>
+            <th>Fraktion</th>
+            <th>Klubb</th>
+            <th>Poäng</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Anna Eriksson</td>
+            <td><img src="https://github.com/Veizla/Veizla/blob/main/images/Flag_of_Sweden.svg" alt="Swedish flag" class="flag"></td>
+            <td>Stockholm</td>
+            <td>Space Marines</td>
+            <td>SV40k Stockholm</td>
+            <td>1500</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Johan Nilsson</td>
+            <td><img src="https://github.com/Veizla/Veizla/blob/main/images/Flag_of_Sweden.svg" alt="Swedish flag" class="flag"></td>
+            <td>Göteborg</td>
+            <td>Orks</td>
+            <td>SV40k Väst</td>
+            <td>1400</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Sofia Lind</td>
+            <td><img src="https://github.com/Veizla/Veizla/blob/main/images/Flag_of_Sweden.svg" alt="Swedish flag" class="flag"></td>
+            <td>Malmö</td>
+            <td>Eldar</td>
+            <td>SV40k Syd</td>
+            <td>1300</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Erik Svensson</td>
+            <td><img src="https://github.com/Veizla/Veizla/blob/main/images/Flag_of_Sweden.svg" alt="Swedish flag" class="flag"></td>
+            <td>Uppsala</td>
+            <td>Tau Empire</td>
+            <td>SV40k Uppsala</td>
+            <td>1200</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>Maria Olsson</td>
+            <td><img src="https://github.com/Veizla/Veizla/blob/main/images/Flag_of_Sweden.svg" alt="Swedish flag" class="flag"></td>
+            <td>Lund</td>
+            <td>Necrons</td>
+            <td>SV40k Syd</td>
+            <td>1100</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>Lars Andersson</td>
+            <td><img src="https://github.com/Veizla/Veizla/blob/main/images/Flag_of_Sweden.svg" alt="Swedish flag" class="flag"></td>
+            <td>Örebro</td>
+            <td>Chaos Space Marines</td>
+            <td>SV40k Mitt</td>
+            <td>1000</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>Klara Bergman</td>
+            <td><img src="https://github.com/Veizla/Veizla/blob/main/images/Flag_of_Sweden.svg" alt="Swedish flag" class="flag"></td>
+            <td>Linköping</td>
+            <td>Dark Angels</td>
+            <td>SV40k Öst</td>
+            <td>900</td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>Peter Karlsson</td>
+            <td><img src="https://github.com/Veizla/Veizla/blob/main/images/Flag_of_Sweden.svg" alt="Swedish flag" class="flag"></td>
+            <td>Västerås</td>
+            <td>Imperial Guard</td>
+            <td>SV40k Mitt</td>
+            <td>800</td>
+        </tr>
+    </table>
+    <footer>
+        <p>© 2025 SV40k - Alla rättigheter reserverade</p>
+    </footer>
+
+    <script>
+        const table = document.getElementById('rankTable');
+        const rows = table.getElementsByTagName('tr');
+
+        for (let row of rows) {
+            row.addEventListener('mousemove', (e) => {
+                const rect = row.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                const ripple = document.createElement('span');
+                ripple.classList.add('ripple');
+                ripple.style.left = `${x}px`;
+                ripple.style.top = `${y}px`;
+                row.appendChild(ripple);
+
+                ripple.addEventListener('animationend', () => {
+                    ripple.remove();
+                });
+            });
+        }
+
+        const styleSheet = document.styleSheets[0];
+        styleSheet.insertRule(`
+            .ripple {
+                position: absolute;
+                background: rgba(0, 255, 0, 0.3);
+                border-radius: 50%;
+                transform: scale(0);
+                animation: rippleEffect 0.6s linear;
+                pointer-events: none;
+            }
+        `, styleSheet.cssRules.length);
+    </script>
+</body>
+</html>
