@@ -168,6 +168,29 @@ function sendToGoogleSheet(name, email, score) {
 
 const music = document.getElementById("background-music");
 const musicToggle = document.getElementById("music-toggle");
+const volumeSlider = document.getElementById("volume-slider");
+
+// Set initial volume to 70%
+music.volume = 0.7;
+volumeSlider.value = 70; // Sync slider with initial volume
+
+// Toggle music play/pause
+musicToggle.addEventListener("click", () => {
+    if (music.paused) {
+        music.play();
+        musicToggle.textContent = "Pause Music";
+    } else {
+        music.pause();
+        musicToggle.textContent = "Play Music";
+    }
+});
+
+// Adjust volume with slider
+volumeSlider.addEventListener("input", () => {
+    music.volume = volumeSlider.value / 100; // Convert 0-100 range to 0.0-1.0
+});
+
+
 musicToggle.addEventListener("click", () => {
     if (music.paused) {
         music.play();
