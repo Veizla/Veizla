@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#000000">
+    <title>Rankning 2025 - SV40k</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000000;
+            color: #00FF00;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        /* Aurora Background with Parallax */
+        @keyframes auroraFlow {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 100%; }
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #00CED1, #800080, #FF69B4, #00FF00);
+            background-size: 200% 200%;
+            animation: auroraFlow 20s ease infinite;
+            opacity: 0.2;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        /* Header with 3D Effect */
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(90deg, #000000, #1a1a1a);
+            box-shadow: 0 4px 15px rgba(128, 0, 128, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+        h1 {
+            font-size: 3rem;
+            color: #00CED1;
+            text-shadow: 0 0 10px #00CED1, 0 0 20px #FF69B4;
+            transition: transform 0.3s ease;
+        }
+        h1:hover {
+            transform: scale(1.05) rotateX(5deg);
+        }
+
+        /* Search Bar */
+        .search-container {
+            margin: 20px auto;
+            max-width: 600px;
+            position: relative;
+        }
+        #searchInput {
+            width: 100%;
+            padding: 12px 40px 12px 15px;
+            border: none;
+            border-radius: 25px;
+            background: rgba(26, 26, 26, 0.8);
+            color: #00FF00;
+            font-size: 1rem;
+            box-shadow: 0 0 10px #800080;
+            transition: box-shadow 0.3s ease;
+        }
+        #searchInput:focus {
+            outline: none;
+            box-shadow: 0 0 20px #00CED1;
+        }
+        .search-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #FF69B4;
+            cursor: pointer;
+        }
+
+        /* Card Grid */
+        .rank-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .rank-card {
+            background: rgba(26, 26, 26, 0.9);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .rank-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 255, 0, 0.1) 0%, transparent 70%);
+            animation: pulse 10s infinite;
+            z-index: -1;
+        }
+        @keyframes pulse {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.5); }
+            100% { transform: scale(0); }
+        }
+        .rank-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 205, 209, 0.3);
+        }
+        .rank-card h3 {
+            color: #FF69B4;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        .rank-card p {
+            color: #00CED1;
+            font-size: 1rem;
+            margin: 5px 0;
+        }
+        .rank-card .rank {
+            font-weight: bold;
+            color: #800080;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #FF69B4;
+            background: linear-gradient(90deg, #000000, #1a1a1a);
+            box-shadow: 0 -4px 15px rgba(128, 0, 128, 0.3);
+            margin-top: auto;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            .rank-grid { grid-template-columns: 1fr; }
+            .rank-card { padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Rankning 2025</h1>
+    </header>
+
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Sök efter namn, stad eller klubb...">
+        <span class="search-icon">🔍</span>
+    </div>
+
+    <div class="rank-grid" id="rankGrid">
+        <div class="rank-card">
+            <h3 class="rank">1. Anna Eriksson</h3>
+            <p><strong>Stad:</strong> Stockholm</p>
+            <p><strong>Fraktion:</strong> Space Marines</p>
+            <p><strong>Klubb:</strong> SV40k Stockholm</p>
+            <p><strong>Poäng:</strong> 1500</p>
+        </div>
+        <div class="rank-card">
+            <h3 class="rank">2. Johan Nilsson</h3>
+            <p><strong>Stad:</strong> Göteborg</p>
+            <p><strong>Fraktion:</strong> Orks</p>
+            <p><strong>Klubb:</strong> SV40k Väst</p>
+            <p><strong>Poäng:</strong> 1400</p>
+        </div>
+        <div class="rank-card">
+            <h3 class="rank">3. Sofia Lind</h3>
+            <p><strong>Stad:</strong> Malmö</p>
+            <p><strong>Fraktion:</strong> Eldar</p>
+            <p><strong>Klubb:</strong> SV40k Syd</p>
+            <p><strong>Poäng:</strong> 1300</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 SV40k - Alla rättigheter reserverade</p>
+    </footer>
+
+    <script>
+        // Search Functionality
+        const searchInput = document.getElementById('searchInput');
+        const rankGrid = document.getElementById('rankGrid');
+        const cards = rankGrid.getElementsByClassName('rank-card');
+
+        searchInput.addEventListener('input', () => {
+            const searchTerm = searchInput.value.toLowerCase();
+            Array.from(cards).forEach(card => {
+                const text = card.textContent.toLowerCase();
+                card.style.display = text.includes(searchTerm) ? 'block' : 'none';
+            });
+        });
+
+        // Parallax Effect (Simulated)
+        window.addEventListener('mousemove', (e) => {
+            const mouseX = e.clientX / window.innerWidth;
+            const mouseY = e.clientY / window.innerHeight;
+            document.body.style.backgroundPosition = `${mouseX * 50}% ${mouseY * 50}%`;
+        });
+    </script>
+</body>
+</html>
