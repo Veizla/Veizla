@@ -105,12 +105,7 @@ let currentQuestion = 0;
 let score = 0;
 let playerName = "";
 let playerEmail = "";
-
-// Leaderboard (sample data)
-let leaderboard = [
-    { name: "Player1", score: 8 },
-    { name: "Player2", score: 6 }
-];
+let leaderboard = [];
 
 // Sign-up form submission
 document.getElementById("signup-form").addEventListener("submit", function(e) {
@@ -120,58 +115,38 @@ document.getElementById("signup-form").addEventListener("submit", function(e) {
     document.getElementById("start-page").style.display = "none";
     document.getElementById("game-page").style.display = "block";
     loadQuestion();
-    updateLeaderboardDisplay();
-// Start music automatically after form submission
+    fetchLeaderboard(); // Fetch leaderboard on start
     const music = document.getElementById("background-music");
-    music.play().catch(error => {
-        console.log("Autoplay blocked by browser:", error);
-        // If autoplay fails, the toggle button can still start it
-    });
+    music.play().catch(error => console.log("Autoplay blocked:", error));
     document.getElementById("music-toggle").textContent = "Pause Music";
 });
 
-// Load question
-function loadQuestion() {
-    if (currentQuestion >= 10) {
-        endGame();
-        return;
-    }
-    const q = questions[currentQuestion];
-    document.getElementById("question-number").textContent = currentQuestion + 1;
-    document.getElementById("question-text").textContent = q.question;
-    const img = document.getElementById("question-image");
-    if (q.image) {
-        img.src = q.image;
-        img.style.display = "block";
-    } else {
-        img.style.display = "none";
-    }
-    const optionsDiv = document.getElementById("options");
-    optionsDiv.innerHTML = "";
-    q.options.forEach(option => {
-        const btn = document.createElement("button");
-        btn.textContent = option;
-        btn.onclick = () => checkAnswer(option, q.answer);
-        optionsDiv.appendChild(btn);
-    });
-    document.getElementById("score").textContent = score;
-}
+// Load question (unchanged)
+function loadQuestion() { /* ... */ }
 
-// Check answer
-function checkAnswer(selected, correct) {
-    if (selected === correct) score++;
-    currentQuestion++;
-    loadQuestion();
-}
+// Check answer (unchanged)
+function checkAnswer(selected, correct) { /* ... */ }
 
 // End game
 function endGame() {
     document.getElementById("game-page").style.display = "none";
     document.getElementById("end-page").style.display = "block";
     document.getElementById("final-score").textContent = score;
-    leaderboard.push({ name: playerName, score: score });
-    leaderboard.sort((a, b) => b.score - a.score);
-    sendToGoogleSheet(playerName, playerEmail, score);
+    sendToGoogleSheet(playerName, playerEmail, score).then(fetchLeaderboard); // Update leaderboard after sending
+}
+
+// Fetch leaderboard from Google Sheet
+function fetchLeaderboard() {
+    fetch("https://script.google.com/macros/s/AKfycby8ooOWRgq_EVJfnDQuX2EDo738KfP1DG0Po78g0Eufw-I7zw5WM_kXvSuXqWF4XBzjjw/exec", {
+        method: "GET"
+    })
+    .then(response => response.json())
+    .then(data => {
+        leaderboard = data;
+        leaderboard.sort((a, b) => b.score - a.score); // Sort by score descending
+        updateLeaderboardDisplay();
+    })
+    .catch(error => console.log("Error fetching leaderboard:", error));
 }
 
 // Update leaderboard display
@@ -186,14 +161,14 @@ function updateLeaderboardDisplay() {
 // Send data to Google Sheet
 function sendToGoogleSheet(name, email, score) {
     const data = { name, email, score, date: new Date().toISOString() };
-    fetch("https://docs.google.com/spreadsheets/d/1A7eJItgsTf99RJx3Nh07qR0FGIUsfx4ox4gv42OPNaY/edit?gid=0#gid=0", {
+    return fetch("https://script.google.com/macros/s/AKfycby8ooOWRgq_EVJfnDQuX2EDo738KfP1DG0Po78g0Eufw-I7zw5WM_kXvSuXqWF4XBzjjw/exec", {
         method: "POST",
         body: JSON.stringify(data),
         headers: { "Content-Type": "application/json" }
     }).then(() => console.log("Data sent to Google Sheet"));
 }
 
-// Music control
+// Music control (unchanged)
 const music = document.getElementById("background-music");
 const musicToggle = document.getElementById("music-toggle");
 musicToggle.addEventListener("click", () => {
@@ -206,5 +181,5 @@ musicToggle.addEventListener("click", () => {
     }
 });
 
-// Initial leaderboard display
-updateLeaderboardDisplay();
+// Initial leaderboard fetch
+fetchLeaderboard();
