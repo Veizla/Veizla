@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Veizla Mega</title>
     <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Google Tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RQ3LM43Y56"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-RQ3LM43Y56');
+    </script>
+    <!-- End Google Tag -->
+
     <style>
         * {
             margin: 0;
@@ -27,7 +38,7 @@
             max-width: 100%;
             height: auto;
             display: block;
-            margin: 0 auto 15px;
+            margin: 20px auto 15px;
         }
 
         h1 {
@@ -37,13 +48,13 @@
         }
 
         h1.center {
-            text-align: center; /* Center-align specific h1 elements */
+            text-align: center;
         }
 
         h2 {
             font-size: 1.75rem;
             font-weight: 700;
-            margin: 40px 0 15px; /* Increased top margin for h2 */
+            margin: 40px 0 15px;
         }
 
         p {
@@ -61,6 +72,10 @@
 
         .small {
             font-size: 0.875rem;
+        }
+
+        .center {
+            text-align: center;
         }
 
         a {
@@ -93,18 +108,28 @@
         }
 
         .image-60 {
-            max-width: 60%; /* Reduce image4.jpg and image3.png to 60% */
+            max-width: 60%;
         }
 
         .image-container {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 15px;
+            margin: 20px auto 15px;
         }
 
         .image-container img {
-            width: 49%; /* Each image takes ~50% of the container */
-            margin: 0; /* Remove default margin for side-by-side layout */
+            width: 49%;
+            margin: 0;
+        }
+
+        .quote {
+            font-style: italic;
+            margin: 20px 0;
+        }
+
+        .quote-attribution {
+            font-style: normal;
+            margin-top: 5px;
         }
 
         @media (max-width: 768px) {
@@ -125,11 +150,11 @@
             }
 
             .image-container {
-                flex-direction: column; /* Stack images on mobile */
+                flex-direction: column;
             }
 
             .image-container img {
-                width: 100%; /* Full width on mobile */
+                width: 100%;
                 margin-bottom: 10px;
             }
         }
@@ -143,7 +168,7 @@
     <p><span class="bold">Stockholm - Veizla Mega</span>, the largest Warhammer event in the Nordics, will take place on <span class="bold">June 13–15</span> at <span class="bold">Glitched Festival</span> in <span class="bold">Jönköping, Sweden</span>.</p>
     
     <img src="images/image4.jpg" alt="Glitched Festival Concept" class="image-60">
-    <p class="small italic">Concept picture by Glitched.se</p>
+    <p class="small italic center">Concept picture by Glitched.se</p>
     
     <p><span class="bold">Warhammer 40,000</span>, produced by <span class="bold">Games Workshop</span>, is the world's most popular miniature wargame. This 30-year-old game has experienced tremendous growth worldwide in recent years. The franchise is more popular than ever, with the highly anticipated video game <span class="bold italic">Space Marine 2</span> receiving great reception and a newly founded partnership with <span class="bold">Amazon</span> for films and television series.</p>
     
@@ -158,11 +183,11 @@
         <img src="images/image2.png" alt="TV Coverage 1">
         <img src="images/image5.png" alt="TV Coverage 2">
     </div>
-    <p class="small italic">The two largest TV-channels in Sweden covered Veizla’s Swedish Championship in Warhammer 40,000 2024</p>
+    <p class="small italic center">The two largest TV-channels in Sweden covered Veizla’s Swedish Championship in Warhammer 40,000 2024</p>
     
     <p>Now, <span class="bold">Veizla Mega</span> is the next big step—bringing a world-class <span class="bold">Warhammer mega-event</span> to the Nordic market and welcoming competitors from around the globe to experience an unforgettable gaming festival in beautiful Jönköping, Sweden.</p>
-    <p>“The Warhammer 40,000 community is truly unique and amazing. In today’s digital world, it’s refreshing to engage in a physical hobby. While hobbies like fishing or tennis are well-known, Warhammer 40,000 is like Fight Club—everyone does it, but no one talks about it!”</p>
-    <p>Veizla Mega is designed to elevate an already thriving Warhammer 40,000 tournament community. This Mega event will raise the bar for Warhammer in the Nordics and be a <span class="bold">‘must-attend experience’</span> for all tabletop and Warhammer enthusiasts!<br><span class="italic">Christian Lord, Veizla Founder</span></p>
+    <p class="quote">“The Warhammer 40,000 community is truly unique and amazing. In today’s digital world, it’s refreshing to engage in a physical hobby. While hobbies like fishing or tennis are well-known, Warhammer 40,000 is like Fight Club—everyone does it, but no one talks about it! Veizla Mega is designed to elevate an already thriving Warhammer 40,000 tournament community. This Mega event will raise the bar for Warhammer in the Nordics and be a <span class="bold">‘must-attend experience’</span> for all tabletop and Warhammer enthusiasts!”</p>
+    <p class="quote-attribution">— Christian Lord, Veizla Founder</p>
     
     <img src="images/image3.png" alt="Veizla Mega Event" class="image-60">
     
