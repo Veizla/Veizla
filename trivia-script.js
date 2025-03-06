@@ -67,9 +67,7 @@ let score = 0;
 let playerName = "";
 let playerEmail = "";
 let leaderboard = [];
-
-// Replace with the URL that worked in Postman
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzuY0h4ANCqIii2IZjtcZ5m5k6XDKF7mLFLBELl6BD89BUpaE6I6hw6bcZg29S6sIG9nQ/exec";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzDl6-pDThjTxbZfrLjABqexYPrM63lrcqmp-vjn7nl_hoPhEj9mig9Oiu8LI40yEp44w/exec"; // Replace if new URL
 
 document.getElementById("signup-form").addEventListener("submit", function(e) {
     e.preventDefault();
@@ -125,9 +123,7 @@ function endGame() {
 
 function fetchLeaderboard() {
     fetch(GOOGLE_SCRIPT_URL, {
-        method: "GET",
-        mode: "cors", // Explicitly enable CORS
-        credentials: "omit" // No credentials needed for public access
+        method: "GET"
     })
     .then(response => {
         if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
@@ -151,17 +147,20 @@ function updateLeaderboardDisplay() {
 }
 
 function sendToGoogleSheet(name, email, score) {
-    const data = { name, email, score, date: new Date().toISOString() };
+    const data = new URLSearchParams({
+        name: name,
+        email: email,
+        score: score,
+        date: new Date().toISOString()
+    });
     return fetch(GOOGLE_SCRIPT_URL, {
         method: "POST",
-        mode: "cors", // Explicitly enable CORS
-        credentials: "omit", // No credentials needed for public access
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: data
     })
     .then(response => {
         if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
-        console.log("Data sent to Google Sheet:", data);
+        console.log("Data sent to Google Sheet:", { name, email, score });
         return response.text();
     })
     .catch(error => console.error("Error sending to Google Sheet:", error));
