@@ -8,55 +8,55 @@ const questions = [
     },
     {
         question: "Which Chaos God is the deity of plague and decay?",
-        image: "https://example.com/chaos-gods.jpg",
+        image: "https://veizla.github.io/Veizla/images/Chaos_gods.webp",
         options: ["Khorne", "Tzeentch", "Nurgle", "Slaanesh"],
         answer: "Nurgle"
     },
     {
         question: "What are the Emperor’s genetically-engineered super-soldiers called?",
-        image: "https://example.com/space-marines.jpg",
-        options: ["Adeptus Custodes", "Primarchs", "Space Marines", "Imperial Guard"],
+        image: "https://veizla.github.io/Veizla/images/40k-imperial-faction-header.jpg",
+        options: ["Adeptus Custodes", "Adeptus Mechanicus", "Space Marines", "Astra Militarum"],
         answer: "Space Marines"
     },
     {
         question: "Which ancient alien race uses necrodermis bodies and once dominated the galaxy?",
-        image: "https://example.com/necron-warrior.jpg",
+        image: "https://veizla.github.io/Veizla/images/episode-235-banner.jpg",
         options: ["Eldar", "Necrons", "Tau", "Orks"],
         answer: "Necrons"
     },
     {
         question: "What is the name of the psychic realm used for faster-than-light travel?",
-        image: "https://example.com/warp-storm.jpg",
+        image: "https://veizla.github.io/Veizla/images/Iron_Hands_Fleet_Arrives.webp",
         options: ["The Webway", "The Warp", "The Void", "The Astronomican"],
         answer: "The Warp"
     },
     {
         question: "Which Space Marine Chapter is known for its black armor and hatred of mutants?",
-        image: "https://example.com/black-templars.jpg",
+        image: "https://veizla.github.io/Veizla/images/warhammer-40k-space-marine-chapters-legions.jpg",
         options: ["Black Templars", "Dark Angels", "Blood Angels", "Space Wolves"],
         answer: "Black Templars"
     },
     {
         question: "What event marked the end of the Great Crusade and the rise of Chaos?",
-        image: "https://example.com/horus-heresy.jpg",
+        image: "https://veizla.github.io/Veizla/images/dawn-of-the-great-crusade-pony-version-by-stdeadra-v0-zy9970t2orfd1.webp",
         options: ["The Horus Heresy", "The Fall of Cadia", "The Great Rift", "The Age of Apostasy"],
         answer: "The Horus Heresy"
     },
     {
         question: "Which Imperial organization hunts down heretics with ruthless zeal?",
-        image: "https://example.com/inquisition-seal.jpg",
+        image: "https://veizla.github.io/Veizla/images/40k-imperium-factions-guide-adeptus-custodes.jpg",
         options: ["Adeptus Mechanicus", "Inquisition", "Ecclesiarchy", "Astra Militarum"],
         answer: "Inquisition"
     },
     {
         question: "What are the massive, junk-built war machines of the Orks called?",
-        image: "https://example.com/ork-gargant.jpg",
+        image: "https://veizla.github.io/Veizla/images/Imperator_Titan_vs_Ork_Mega-Gargant.webp",
         options: ["Gargants", "Baneblades", "Titans", "Dreadnoughts"],
         answer: "Gargants"
     },
     {
         question: "Which primarch was resurrected to lead the Imperium in the 41st millennium?",
-        image: "https://example.com/primarch-guilliman.jpg",
+        image: "https://veizla.github.io/Veizla/images/The_Primarchs.webp",
         options: ["Sanguinius", "Rogal Dorn", "Roboute Guilliman", "Lion El’Jonson"],
         answer: "Roboute Guilliman"
     }
