@@ -36,10 +36,14 @@
             margin: 20px 0;
         }
 
+        h1.center {
+            text-align: center; /* Center-align specific h1 elements */
+        }
+
         h2 {
             font-size: 1.75rem;
             font-weight: 700;
-            margin: 15px 0;
+            margin: 40px 0 15px; /* Increased top margin for h2 */
         }
 
         p {
@@ -60,7 +64,7 @@
         }
 
         a {
-            color: #b4ff01; /* Changed link color to #b4ff01 */
+            color: #b4ff01;
             text-decoration: underline;
         }
 
@@ -84,8 +88,23 @@
         }
 
         .highlight {
-            color: #b4ff01; /* Changed highlight color to match links */
+            color: #b4ff01;
             text-decoration: underline;
+        }
+
+        .image-60 {
+            max-width: 60%; /* Reduce image4.jpg and image3.png to 60% */
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .image-container img {
+            width: 49%; /* Each image takes ~50% of the container */
+            margin: 0; /* Remove default margin for side-by-side layout */
         }
 
         @media (max-width: 768px) {
@@ -104,17 +123,26 @@
             body {
                 padding: 10px;
             }
+
+            .image-container {
+                flex-direction: column; /* Stack images on mobile */
+            }
+
+            .image-container img {
+                width: 100%; /* Full width on mobile */
+                margin-bottom: 10px;
+            }
         }
     </style>
 </head>
 <body>
     <img src="images/image1.jpg" alt="Veizla Mega Banner">
-    <h1>Veizla Mega</h1>
-    <h1>The Largest Warhammer Event in the Nordics!</h1>
+    <h1 class="center">Veizla Mega</h1>
+    <h1 class="center">The Largest Warhammer Event in the Nordics!</h1>
     <p class="bold small">February 28, 2025</p>
     <p><span class="bold">Stockholm - Veizla Mega</span>, the largest Warhammer event in the Nordics, will take place on <span class="bold">June 13–15</span> at <span class="bold">Glitched Festival</span> in <span class="bold">Jönköping, Sweden</span>.</p>
     
-    <img src="images/image4.jpg" alt="Glitched Festival Concept">
+    <img src="images/image4.jpg" alt="Glitched Festival Concept" class="image-60">
     <p class="small italic">Concept picture by Glitched.se</p>
     
     <p><span class="bold">Warhammer 40,000</span>, produced by <span class="bold">Games Workshop</span>, is the world's most popular miniature wargame. This 30-year-old game has experienced tremendous growth worldwide in recent years. The franchise is more popular than ever, with the highly anticipated video game <span class="bold italic">Space Marine 2</span> receiving great reception and a newly founded partnership with <span class="bold">Amazon</span> for films and television series.</p>
@@ -126,15 +154,17 @@
         <li>Organizer of the <span class="bold">Swedish Championship</span> in Warhammer 40,000 2024</li>
     </ul>
     
-    <img src="images/image2.png" alt="TV Coverage 1">
-    <img src="images/image5.png" alt="TV Coverage 2">
+    <div class="image-container">
+        <img src="images/image2.png" alt="TV Coverage 1">
+        <img src="images/image5.png" alt="TV Coverage 2">
+    </div>
     <p class="small italic">The two largest TV-channels in Sweden covered Veizla’s Swedish Championship in Warhammer 40,000 2024</p>
     
     <p>Now, <span class="bold">Veizla Mega</span> is the next big step—bringing a world-class <span class="bold">Warhammer mega-event</span> to the Nordic market and welcoming competitors from around the globe to experience an unforgettable gaming festival in beautiful Jönköping, Sweden.</p>
     <p>“The Warhammer 40,000 community is truly unique and amazing. In today’s digital world, it’s refreshing to engage in a physical hobby. While hobbies like fishing or tennis are well-known, Warhammer 40,000 is like Fight Club—everyone does it, but no one talks about it!”</p>
     <p>Veizla Mega is designed to elevate an already thriving Warhammer 40,000 tournament community. This Mega event will raise the bar for Warhammer in the Nordics and be a <span class="bold">‘must-attend experience’</span> for all tabletop and Warhammer enthusiasts!<br><span class="italic">Christian Lord, Veizla Founder</span></p>
     
-    <img src="images/image3.png" alt="Veizla Mega Event">
+    <img src="images/image3.png" alt="Veizla Mega Event" class="image-60">
     
     <h2>What is Veizla Mega?</h2>
     <p><span class="bold">🔥 Premium Warhammer event in a convention center</span> (a first for the Nordics!)</p>
@@ -174,7 +204,7 @@
     <p>⚫️ <a href="https://x.com/veizla">https://x.com/veizla</a></p>
     <p>🟣 <a href="https://www.instagram.com/veizlagaming/">https://www.instagram.com/veizlagaming/</a></p>
     
-    <p class="bold">Join us at Veizla Mega and be part of something legendary!</p>
+    <h1 class="center">Join us at Veizla Mega and be part of something legendary!</h1>
     <img src="images/image1.jpg" alt="Veizla Mega Closing Banner">
     
     <h2>What is Veizla?</h2>
