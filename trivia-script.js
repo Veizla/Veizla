@@ -68,7 +68,9 @@ let playerName = "";
 let playerEmail = "";
 let leaderboard = [];
 
-// Sign-up form submission
+// Replace with the URL that worked in Postman
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzuY0h4ANCqIii2IZjtcZ5m5k6XDKF7mLFLBELl6BD89BUpaE6I6hw6bcZg29S6sIG9nQ/exec";
+
 document.getElementById("signup-form").addEventListener("submit", function(e) {
     e.preventDefault();
     playerName = document.getElementById("name").value;
@@ -76,13 +78,12 @@ document.getElementById("signup-form").addEventListener("submit", function(e) {
     document.getElementById("start-page").style.display = "none";
     document.getElementById("game-page").style.display = "block";
     loadQuestion();
-    fetchLeaderboard(); // Fetch leaderboard on start
+    fetchLeaderboard();
     const music = document.getElementById("background-music");
     music.play().catch(error => console.log("Autoplay blocked:", error));
     document.getElementById("music-toggle").textContent = "Pause Music";
 });
 
-// Load question
 function loadQuestion() {
     if (currentQuestion >= 10) {
         endGame();
@@ -109,38 +110,38 @@ function loadQuestion() {
     document.getElementById("score").textContent = score;
 }
 
-// Check answer
 function checkAnswer(selected, correct) {
     if (selected === correct) score++;
     currentQuestion++;
     loadQuestion();
 }
 
-// End game
 function endGame() {
     document.getElementById("game-page").style.display = "none";
     document.getElementById("end-page").style.display = "block";
     document.getElementById("final-score").textContent = score;
-    sendToGoogleSheet(playerName, playerEmail, score).then(fetchLeaderboard); // Update leaderboard after sending
+    sendToGoogleSheet(playerName, playerEmail, score).then(() => fetchLeaderboard());
 }
 
-// Fetch leaderboard from Google Sheet
 function fetchLeaderboard() {
-    fetch("https://script.google.com/macros/s/AKfycbzuY0h4ANCqIii2IZjtcZ5m5k6XDKF7mLFLBELl6BD89BUpaE6I6hw6bcZg29S6sIG9nQ/exec", {
-        method: "GET"
-	mode: "cors",
-	credentials: "omit"
+    fetch(GOOGLE_SCRIPT_URL, {
+        method: "GET",
+        mode: "cors", // Explicitly enable CORS
+        credentials: "omit" // No credentials needed for public access
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+        return response.json();
+    })
     .then(data => {
+        console.log("Leaderboard data:", data);
         leaderboard = data;
-        leaderboard.sort((a, b) => b.score - a.score); // Sort by score descending
+        leaderboard.sort((a, b) => b.score - a.score);
         updateLeaderboardDisplay();
     })
-    .catch(error => console.log("Error fetching leaderboard:", error));
+    .catch(error => console.error("Error fetching leaderboard:", error));
 }
 
-// Update leaderboard display
 function updateLeaderboardDisplay() {
     const lb = document.getElementById("leaderboard");
     lb.innerHTML = "";
@@ -149,19 +150,23 @@ function updateLeaderboardDisplay() {
     });
 }
 
-// Send data to Google Sheet
 function sendToGoogleSheet(name, email, score) {
     const data = { name, email, score, date: new Date().toISOString() };
-    return fetch("https://script.google.com/macros/s/AKfycbzuY0h4ANCqIii2IZjtcZ5m5k6XDKF7mLFLBELl6BD89BUpaE6I6hw6bcZg29S6sIG9nQ/exec", {
+    return fetch(GOOGLE_SCRIPT_URL, {
         method: "POST",
-	mode: "cors", 
-        credentials: "omit", 
-        body: JSON.stringify(data),
-        headers: { "Content-Type": "application/json" }
-    }).then(() => console.log("Data sent to Google Sheet"));
+        mode: "cors", // Explicitly enable CORS
+        credentials: "omit", // No credentials needed for public access
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+        console.log("Data sent to Google Sheet:", data);
+        return response.text();
+    })
+    .catch(error => console.error("Error sending to Google Sheet:", error));
 }
 
-// Music control
 const music = document.getElementById("background-music");
 const musicToggle = document.getElementById("music-toggle");
 musicToggle.addEventListener("click", () => {
@@ -174,5 +179,4 @@ musicToggle.addEventListener("click", () => {
     }
 });
 
-// Initial leaderboard fetch
 fetchLeaderboard();
