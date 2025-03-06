@@ -126,7 +126,7 @@ function endGame() {
 
 // Fetch leaderboard from Google Sheet
 function fetchLeaderboard() {
-    fetch("https://script.google.com/macros/s/AKfycbySwzsG71OlrurjWpTNjUjYFAMyPzGdtO-OyBoxRD92-VLNlpQT5MvMR0-mfsx-XXWodQ/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbyamDHSVD7YkKMQruLxPvBPCZZZF5w8fryzvOBdU9jVlJgaWAue9op8qfLER1RqDkgz2A/exec", {
         method: "GET"
     })
     .then(response => response.json())
@@ -150,7 +150,7 @@ function updateLeaderboardDisplay() {
 // Send data to Google Sheet
 function sendToGoogleSheet(name, email, score) {
     const data = { name, email, score, date: new Date().toISOString() };
-    return fetch("https://script.google.com/macros/s/AKfycbySwzsG71OlrurjWpTNjUjYFAMyPzGdtO-OyBoxRD92-VLNlpQT5MvMR0-mfsx-XXWodQ/exec", {
+    return fetch("https://script.google.com/macros/s/AKfycbyamDHSVD7YkKMQruLxPvBPCZZZF5w8fryzvOBdU9jVlJgaWAue9op8qfLER1RqDkgz2A/exec", {
         method: "POST",
         body: JSON.stringify(data),
         headers: { "Content-Type": "application/json" }
