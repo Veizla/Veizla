@@ -173,53 +173,35 @@
     </div>
 
     <div class="rank-grid" id="rankGrid">
+        <!-- Top 100 Rankings with Placeholder City, Faction, and Club -->
         <div class="rank-card">
-            <h3 class="rank">1. Anna Eriksson</h3>
+            <h3 class="rank">1. Jesper Unander-Scharin [#10546]</h3>
             <p><strong>Stad:</strong> Stockholm</p>
             <p><strong>Fraktion:</strong> Space Marines</p>
             <p><strong>Klubb:</strong> SV40k Stockholm</p>
-            <p><strong>Poäng:</strong> 1500</p>
+            <p><strong>Poäng:</strong> 104295</p>
         </div>
         <div class="rank-card">
-            <h3 class="rank">2. Johan Nilsson</h3>
+            <h3 class="rank">2. Karl Abrahamsson [#11314]</h3>
             <p><strong>Stad:</strong> Göteborg</p>
             <p><strong>Fraktion:</strong> Orks</p>
             <p><strong>Klubb:</strong> SV40k Väst</p>
-            <p><strong>Poäng:</strong> 1400</p>
+            <p><strong>Poäng:</strong> 85117</p>
         </div>
         <div class="rank-card">
-            <h3 class="rank">3. Sofia Lind</h3>
+            <h3 class="rank">3. Sebastian Larsson [#12041]</h3>
             <p><strong>Stad:</strong> Malmö</p>
             <p><strong>Fraktion:</strong> Eldar</p>
             <p><strong>Klubb:</strong> SV40k Syd</p>
-            <p><strong>Poäng:</strong> 1300</p>
+            <p><strong>Poäng:</strong> 82693</p>
         </div>
-    </div>
-
-    <footer>
-        <p>© 2025 SV40k - Alla rättigheter reserverade</p>
-    </footer>
-
-    <script>
-        // Search Functionality
-        const searchInput = document.getElementById('searchInput');
-        const rankGrid = document.getElementById('rankGrid');
-        const cards = rankGrid.getElementsByClassName('rank-card');
-
-        searchInput.addEventListener('input', () => {
-            const searchTerm = searchInput.value.toLowerCase();
-            Array.from(cards).forEach(card => {
-                const text = card.textContent.toLowerCase();
-                card.style.display = text.includes(searchTerm) ? 'block' : 'none';
-            });
-        });
-
-        // Parallax Effect (Simulated)
-        window.addEventListener('mousemove', (e) => {
-            const mouseX = e.clientX / window.innerWidth;
-            const mouseY = e.clientY / window.innerHeight;
-            document.body.style.backgroundPosition = `${mouseX * 50}% ${mouseY * 50}%`;
-        });
-    </script>
-</body>
-</html>
+        <div class="rank-card">
+            <h3 class="rank">4. Axel Rydén [#10017]</h3>
+            <p><strong>Stad:</strong> Uppsala</p>
+            <p><strong>Fraktion:</strong> Chaos Space Marines</p>
+            <p><strong>Klubb:</strong> SV40k Uppsala</p>
+            <p><strong>Poäng:</strong> 78259</p>
+        </div>
+        <div class="rank-card">
+            <h3 class="rank">5. Olof Svensson [#10873]</h3>
+           
